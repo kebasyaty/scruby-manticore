@@ -1,1 +1,1 @@
-::: <package name>.<module name>
+::: scruby_manticore

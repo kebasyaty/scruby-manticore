@@ -1,3 +1,3 @@
 ```shell
-uv add <package name>
+uv add scruby-manticore
 ```
