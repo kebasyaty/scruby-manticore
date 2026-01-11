@@ -1,10 +1,10 @@
-site_name: <REPOSITORY-NAME> Docs
-site_description: "???"
-site_url: https://kebasyaty.github.io/<REPOSITORY-NAME>/
+site_name: Scruby-Manticore Docs
+site_description: "Full-text search with Manticore Search."
+site_url: https://kebasyaty.github.io/scruby-manticore/
 site_author: Kebasyaty
-copyright: Copyright &copy; 2025 Maintained by <a href="https://github.com/kebasyaty">Kebasyaty</a>
-repo_name: kebasyaty/<REPOSITORY-NAME>
-repo_url: https://github.com/kebasyaty/<REPOSITORY-NAME>
+copyright: Copyright &copy; 2026 Maintained by <a href="https://github.com/kebasyaty">Kebasyaty</a>
+repo_name: kebasyaty/scruby-manticore
+repo_url: https://github.com/kebasyaty/scruby-manticore
 
 theme:
   name: material
@@ -35,11 +35,11 @@ theme:
     - toc.follow
   palette:
     scheme: slate
-    primary: indigo
-    accent: indigo
+    primary: orange
+    accent: orange
 
 extra_css:
-  - custom_style/github_indigo.css
+  - custom_style/github_orange.css
 
 plugins:
   - search
@@ -82,7 +82,7 @@ extra:
       link: https://twitter.com
 
 nav:
-  - <REPOSITORY-NAME>: index.md
+  - Scruby-Manticore: index.md
   - Installation: pages/installation.md
   - Usage: pages/usage.md
   - Details: pages/details.md
