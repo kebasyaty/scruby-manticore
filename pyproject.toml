@@ -27,7 +27,10 @@ classifiers = [
     "Topic :: Database", # <------------------------------------------ ???
     "Typing :: Typed",
 ]
-dependencies = ["manticoresearch"]
+dependencies = [
+    "manticoresearch",
+    "xloft>=0.9.8",
+]
 
 [project.urls]
 Homepage = "https://kebasyaty.github.io/scruby-manticore/"
