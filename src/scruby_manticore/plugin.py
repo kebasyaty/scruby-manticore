@@ -19,12 +19,8 @@ from anyio import Path
 class Plugin:
     """Plugin for Scruby based on Manticore Search."""
 
-    def __init__(self, scruby) -> None:  # noqa: D107
+    def __init__(self, scruby: Any) -> None:  # noqa: D107
         self.scruby = weakref.ref(scruby)
-
-    def x(self):
-        """???"""
-        return self.scruby().title
 
     @staticmethod
     async def _task_find(
