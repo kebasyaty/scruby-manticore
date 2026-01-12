@@ -22,5 +22,5 @@ __all__ = (
     "fullTextLang",
 )
 
-from scruby_manticore.plugin import FullText
-from scruby_manticore.settings import LANGUAGES as fullTextLang
+from scruby_full_text.plugin import FullText
+from scruby_full_text.settings import LANGUAGES as fullTextLang

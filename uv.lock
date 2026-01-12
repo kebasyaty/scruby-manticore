@@ -1327,7 +1327,7 @@ wheels = [
 
 [[package]]
 name = "scruby"
-version = "0.31.0"
+version = "0.32.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -1335,9 +1335,10 @@ dependencies = [
     { name = "phonenumbers" },
     { name = "pydantic", extra = ["email", "timezone"] },
     { name = "pydantic-extra-types" },
+    { name = "xloft" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/75/99/49e1fcd9719b146b49775690235575c9fac72c5c61f1bb7a3a1fc7f23446/scruby-0.31.0-py3-none-any.whl", hash = "sha256:91c70b7806fae0c9a12d6ce8f31ae9fccb9444aa565aec63905f9c4dd2ef9916", size = 19270, upload-time = "2026-01-09T11:35:09.495Z" },
+    { url = "https://files.pythonhosted.org/packages/91/f6/a7f2860bf29bb0517fc281a435e1240a107a85dc98f7911ebae70ada5271/scruby-0.32.0-py3-none-any.whl", hash = "sha256:25734323e29d7dd304bea52a0b817fb425d05bf5781f9e2f2341a53208214688", size = 19451, upload-time = "2026-01-11T19:19:02.925Z" },
 ]
 
 [[package]]
@@ -1346,7 +1347,6 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "manticoresearch" },
-    { name = "xloft" },
 ]
 
 [package.dev-dependencies]
@@ -1372,10 +1372,7 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "manticoresearch", git = "https://github.com/manticoresoftware/manticoresearch-python-asyncio.git" },
-    { name = "xloft", specifier = ">=0.9.8" },
-]
+requires-dist = [{ name = "manticoresearch", git = "https://github.com/manticoresoftware/manticoresearch-python-asyncio.git" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "scruby", specifier = ">=0.31.0" }]

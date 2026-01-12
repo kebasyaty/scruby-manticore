@@ -1,1 +1,1 @@
-::: scruby_manticore
+::: scruby_full_text

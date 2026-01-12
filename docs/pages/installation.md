@@ -1,3 +1,3 @@
 ```shell
-uv add scruby-manticore
+uv add scruby-full-text
 ```

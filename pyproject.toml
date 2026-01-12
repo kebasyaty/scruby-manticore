@@ -29,7 +29,6 @@ classifiers = [
 ]
 dependencies = [
     "manticoresearch",
-    "xloft>=0.9.8",
 ]
 
 [project.urls]

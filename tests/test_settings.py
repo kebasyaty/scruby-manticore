@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from scruby_manticore import fullTextLang
+from scruby_full_text import fullTextLang
 
 languages = {
     "Arabic": "libstemmer_ar",
