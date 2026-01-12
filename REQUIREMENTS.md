@@ -6,7 +6,7 @@
 
 #### Dependencies
 
-- None
+- [manticoresearch-python-asyncio](https://github.com/manticoresoftware/manticoresearch-python-asyncio.git "manticoresearch-python-asyncio")
 
 #### Dev-Dependencies
 
