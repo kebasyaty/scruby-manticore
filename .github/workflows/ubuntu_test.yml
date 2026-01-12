@@ -33,7 +33,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           apt update
-          apt install -y gnupg2 systemctl git
+          apt install -y git
           systemctl start manticore
 
       - uses: astral-sh/setup-uv@v7
