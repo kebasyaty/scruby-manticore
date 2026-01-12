@@ -1348,6 +1348,7 @@ source = { editable = "." }
 dependencies = [
     { name = "anyio" },
     { name = "manticoresearch" },
+    { name = "scruby-plugin" },
 ]
 
 [package.dev-dependencies]
@@ -1376,6 +1377,7 @@ test = [
 requires-dist = [
     { name = "anyio", specifier = ">=4.12.1" },
     { name = "manticoresearch", git = "https://github.com/manticoresoftware/manticoresearch-python-asyncio.git" },
+    { name = "scruby-plugin", specifier = ">=0.2.2" },
 ]
 
 [package.metadata.requires-dev]
@@ -1398,6 +1400,14 @@ test = [
     { name = "pytest-asyncio", specifier = ">=1.3.0" },
 ]
 types = []
+
+[[package]]
+name = "scruby-plugin"
+version = "0.2.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a1/ce/9ac56eafd4f77299a4b21a2156992d69eb42d99fb6ed7df071bd33463c64/scruby_plugin-0.2.2-py3-none-any.whl", hash = "sha256:d495649a1f47313a051e595a8f51a9ff79a4273dfe9800a66f7ca57788f87f03", size = 3722, upload-time = "2026-01-12T16:11:52.281Z" },
+]
 
 [[package]]
 name = "six"

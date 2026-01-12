@@ -8,19 +8,19 @@ from __future__ import annotations
 __all__ = ("FullText",)
 
 import concurrent.futures
-import weakref
 from collections.abc import Callable
 from typing import Any
 
 import orjson
 from anyio import Path
+from scruby_plugin import ScrubyPlugin
 
 
-class FullText:
+class FullText(ScrubyPlugin):
     """Plugin for Scruby based on Manticore Search."""
 
     def __init__(self, scruby: Any) -> None:  # noqa: D107
-        self.scruby = weakref.ref(scruby)
+        ScrubyPlugin.__init__(self, scruby)
 
     @staticmethod
     async def _task_find(
