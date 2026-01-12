@@ -28,7 +28,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Typing :: Typed",
 ]
-dependencies = ["anyio>=4.12.1", "manticoresearch"]
+dependencies = ["anyio>=4.12.1", "manticoresearch", "scruby-plugin>=0.2.2"]
 
 [project.urls]
 Homepage = "https://kebasyaty.github.io/scruby-full-text/"
