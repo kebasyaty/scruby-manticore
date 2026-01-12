@@ -33,7 +33,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           apt update
-          apt install -y curl gnupg2 git
+          apt install -y curl wget gnupg2 git
           curl -sLO https://repo.manticoresearch.com/manticore-repo.noarch.deb
           dpkg -i manticore-repo.noarch.deb
           apt install -y manticore manticore-extra
