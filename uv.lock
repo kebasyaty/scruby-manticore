@@ -1346,6 +1346,7 @@ name = "scruby-full-text"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "anyio" },
     { name = "manticoresearch" },
 ]
 
@@ -1372,7 +1373,10 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "manticoresearch", git = "https://github.com/manticoresoftware/manticoresearch-python-asyncio.git" }]
+requires-dist = [
+    { name = "anyio", specifier = ">=4.12.1" },
+    { name = "manticoresearch", git = "https://github.com/manticoresoftware/manticoresearch-python-asyncio.git" },
+]
 
 [package.metadata.requires-dev]
 dev = [{ name = "scruby", specifier = ">=0.32.0" }]
