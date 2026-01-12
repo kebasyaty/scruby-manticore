@@ -41,4 +41,4 @@ DESCRIPTION...
 
 #### License
 
-_This project is licensed under the_ [MIT](https://github.com/kebasyaty/scruby-full-text/blob/main/LICENSE "MIT").
+_This project is licensed under the_ [GPL-3.0-or-later](https://github.com/kebasyaty/scruby-full-text/blob/main/LICENSE "GPL-3.0-or-later").
