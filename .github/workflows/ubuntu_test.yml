@@ -17,7 +17,7 @@ jobs:
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
     container:
-      image: manticoresearch/manticore:latest
+      image: ubuntu:latest
       options: --user root
 
     steps:
@@ -33,7 +33,10 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           apt update
-          apt install -y git
+          apt install -y wget gnupg2 git
+          wget https://repo.manticoresearch.com/manticore-repo.noarch.deb
+          dpkg -i manticore-repo.noarch.deb
+          apt install -y manticore manticore-extra
           service manticore start
 
       - uses: astral-sh/setup-uv@v7
