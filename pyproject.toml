@@ -201,5 +201,11 @@ matches = "tests/**"
 [tool.pyrefly.sub-config.errors]
 missing-attribute = false
 
+[[tool.pyrefly.sub-config]]
+matches = "src/scruby_full_text/settings.py"
+
+[tool.pyrefly.sub-config.errors]
+bad-argument-type = false
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

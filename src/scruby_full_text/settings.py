@@ -17,33 +17,33 @@ from xloft import AliasDict
 # List of supported languages for full-text search.
 LANG_FULL_TEXT_SEARCH: AliasDict = AliasDict(
     [
-        ({"Arabic", "ar"}, ("ar", "libstemmer_ar")),  # pyrefly: ignore[bad-argument-type]
-        ({"Catalan", "ca"}, ("ca", "libstemmer_ca")),  # pyrefly: ignore[bad-argument-type]
-        ({"Chinese", "zh"}, ("zh", "jieba_chinese")),  # pyrefly: ignore[bad-argument-type]
-        ({"Czech", "cz"}, ("cz", "stem_cz")),  # pyrefly: ignore[bad-argument-type]
-        ({"Danish", "da"}, ("da", "libstemmer_da")),  # pyrefly: ignore[bad-argument-type]
-        ({"Dutch", "hl"}, ("hl", "libstemmer_nl")),  # pyrefly: ignore[bad-argument-type]
-        ({"English", "en"}, ("en", "lemmatize_en_all")),  # pyrefly: ignore[bad-argument-type]
-        ({"Finnish", "fi"}, ("fi", "libstemmer_fi")),  # pyrefly: ignore[bad-argument-type]
-        ({"French", "fr"}, ("fr", "libstemmer_fr")),  # pyrefly: ignore[bad-argument-type]
-        ({"German", "de"}, ("de", "lemmatize_de_all")),  # pyrefly: ignore[bad-argument-type]
-        ({"Greek", "el"}, ("el", "libstemmer_el")),  # pyrefly: ignore[bad-argument-type]
-        ({"Hindi", "hi"}, ("hi", "libstemmer_hi")),  # pyrefly: ignore[bad-argument-type]
-        ({"Hungarian", "hu"}, ("hu", "libstemmer_hu")),  # pyrefly: ignore[bad-argument-type]
-        ({"Indonesian", "id"}, ("id", "libstemmer_id")),  # pyrefly: ignore[bad-argument-type]
-        ({"Irish", "ga"}, ("ga", "libstemmer_ga")),  # pyrefly: ignore[bad-argument-type]
-        ({"Italian", "it"}, ("it", "libstemmer_it")),  # pyrefly: ignore[bad-argument-type]
-        ({"Japanese", "ja"}, ("ga", "ngram_chars=japanese ngram_len=1")),  # pyrefly: ignore[bad-argument-type]
-        ({"Korean", "ko"}, ("ko", "ngram_chars=korean ngram_len=1")),  # pyrefly: ignore[bad-argument-type]
-        ({"Lithuanian", "lt"}, ("lt", "libstemmer_lt")),  # pyrefly: ignore[bad-argument-type]
-        ({"Nepali", "ne"}, ("ne", "libstemmer_ne")),  # pyrefly: ignore[bad-argument-type]
-        ({"Norwegian", "no"}, ("no", "libstemmer_no")),  # pyrefly: ignore[bad-argument-type]
-        ({"Portuguese", "pt"}, ("pt", "libstemmer_pt")),  # pyrefly: ignore[bad-argument-type]
-        ({"Romanian", "ro"}, ("ro", "libstemmer_ro")),  # pyrefly: ignore[bad-argument-type]
-        ({"Russian", "ru"}, ("ru", "lemmatize_ru_all")),  # pyrefly: ignore[bad-argument-type]
-        ({"Spanish", "es"}, ("es", "libstemmer_es")),  # pyrefly: ignore[bad-argument-type]
-        ({"Swedish", "sv"}, ("sv", "libstemmer_sv")),  # pyrefly: ignore[bad-argument-type]
-        ({"Tamil", "ta"}, ("ta", "libstemmer_ta")),  # pyrefly: ignore[bad-argument-type]
-        ({"Turkish", "tr"}, ("tr", "libstemmer_tr")),  # pyrefly: ignore[bad-argument-type]
+        ({"Arabic", "ar"}, ("ar", "libstemmer_ar")),
+        ({"Catalan", "ca"}, ("ca", "libstemmer_ca")),
+        ({"Chinese", "zh"}, ("zh", "jieba_chinese")),
+        ({"Czech", "cz"}, ("cz", "stem_cz")),
+        ({"Danish", "da"}, ("da", "libstemmer_da")),
+        ({"Dutch", "hl"}, ("hl", "libstemmer_nl")),
+        ({"English", "en"}, ("en", "lemmatize_en_all")),
+        ({"Finnish", "fi"}, ("fi", "libstemmer_fi")),
+        ({"French", "fr"}, ("fr", "libstemmer_fr")),
+        ({"German", "de"}, ("de", "lemmatize_de_all")),
+        ({"Greek", "el"}, ("el", "libstemmer_el")),
+        ({"Hindi", "hi"}, ("hi", "libstemmer_hi")),
+        ({"Hungarian", "hu"}, ("hu", "libstemmer_hu")),
+        ({"Indonesian", "id"}, ("id", "libstemmer_id")),
+        ({"Irish", "ga"}, ("ga", "libstemmer_ga")),
+        ({"Italian", "it"}, ("it", "libstemmer_it")),
+        ({"Japanese", "ja"}, ("ga", "ngram_chars=japanese ngram_len=1")),
+        ({"Korean", "ko"}, ("ko", "ngram_chars=korean ngram_len=1")),
+        ({"Lithuanian", "lt"}, ("lt", "libstemmer_lt")),
+        ({"Nepali", "ne"}, ("ne", "libstemmer_ne")),
+        ({"Norwegian", "no"}, ("no", "libstemmer_no")),
+        ({"Portuguese", "pt"}, ("pt", "libstemmer_pt")),
+        ({"Romanian", "ro"}, ("ro", "libstemmer_ro")),
+        ({"Russian", "ru"}, ("ru", "lemmatize_ru_all")),
+        ({"Spanish", "es"}, ("es", "libstemmer_es")),
+        ({"Swedish", "sv"}, ("sv", "libstemmer_sv")),
+        ({"Tamil", "ta"}, ("ta", "libstemmer_ta")),
+        ({"Turkish", "tr"}, ("tr", "libstemmer_tr")),
     ],
 )
