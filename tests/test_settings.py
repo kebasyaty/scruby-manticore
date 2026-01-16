@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from scruby_full_text import settings
 
-languages = {
+LANGUAGES = {
     "Arabic": ("ar", "libstemmer_ar"),
     "Catalan": ("ca", "libstemmer_ca"),
     "Chinese": ("zh", "jieba_chinese"),
@@ -41,8 +41,8 @@ class TestPositive:
 
     def test_supported_languages(self) -> None:
         """Testing supported languages."""
-        for lang, data in languages.items():
-            tmp = settings.get(lang)
+        for lang, data in LANGUAGES.items():
+            tmp = settings.LANG_FULL_TEXT_SEARCH.get(lang)
             assert tmp is not None
             assert tmp[0] == data[0]
             assert tmp[1] == data[1]

@@ -10,12 +10,12 @@ The module contains the following parameters:
 
 from __future__ import annotations
 
-__all__ = ("MORPHOLOGY",)
+__all__ = ("LANG_FULL_TEXT_SEARCH",)
 
 from xloft import AliasDict
 
 # List of supported languages for full-text search.
-MORPHOLOGY: AliasDict = AliasDict(
+LANG_FULL_TEXT_SEARCH: AliasDict = AliasDict(
     [
         ({"Arabic", "ar"}, ("ar", "libstemmer_ar")),  # pyrefly: ignore[bad-argument-type]
         ({"Catalan", "ca"}, ("ca", "libstemmer_ca")),  # pyrefly: ignore[bad-argument-type]
