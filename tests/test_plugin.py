@@ -45,9 +45,9 @@ class TestPositive:
             lang_morphology=full_text_settings.LANG_FULL_TEXT_SEARCH.get("English"),
             full_text_filter={"brand": "???", "model": "???"},
         )
-        #
+
         assert car is None
-        #
+
         # Full database deletion.
         # Hint: The main purpose is tests.
         Scruby.napalm()
