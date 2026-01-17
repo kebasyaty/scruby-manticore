@@ -64,8 +64,9 @@ class FullText(ScrubyPlugin):
                 if filter_fn(doc):
                     table_name: str = str(uuid.uuid4())
                     text_field_list = full_text_filter.keys()
+                    doc_dict: dict[str, Any] = orjson.loads(val)
                     text_field_dict: dict[str, Any] = {
-                        key: val for key, val in orjson.loads(val) if key in text_field_list
+                        key: val or "" for key, val in doc_dict.items() if key in text_field_list
                     }
                     table_fields: str = ",".join([f"{field_name} text" for field_name in text_field_list])
                     lang_code: str = lang_morphology[0]  # noqa: F841

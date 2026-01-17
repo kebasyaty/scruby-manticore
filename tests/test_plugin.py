@@ -38,8 +38,21 @@ class TestPositive:
 
     async def test_create_instance(self) -> None:
         """Create instance of plugin."""
+        # Full database deletion.
+        # Hint: The main purpose is tests.
+        Scruby.napalm()
+        #
         # Get collection `Car`
         car_coll = await Scruby.collection(Car)
+        # Create cars.
+        for num in range(1, 10):
+            car = Car(
+                brand="Mazda",
+                model=f"EZ-6 {num}",
+                year=2025,
+                power_reserve=600,
+            )
+            await car_coll.add_doc(car)
         # Find a car
         car: Car | None = await car_coll.plugins.fullText.find_one(
             lang_morphology=full_text_settings.LANG_FULL_TEXT_SEARCH.get("English"),
@@ -47,7 +60,7 @@ class TestPositive:
         )
 
         assert car is None
-
+        #
         # Full database deletion.
         # Hint: The main purpose is tests.
         Scruby.napalm()
