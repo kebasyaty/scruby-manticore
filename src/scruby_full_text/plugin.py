@@ -31,7 +31,7 @@ class FullText(ScrubyPlugin):
     def _task_find(
         branch_number: int,
         lang_morphology: tuple[str, str],
-        full_text_filter: dict[str, str],
+        full_text_filter: tuple[str, str],
         filter_fn: Callable,
         hash_reduce_left: str,
         db_root: str,
@@ -62,13 +62,11 @@ class FullText(ScrubyPlugin):
             for _, val in data.items():
                 doc = class_model.model_validate_json(val)
                 if filter_fn(doc):
-                    table_name: str = str(uuid.uuid4())
-                    text_field_list = full_text_filter.keys()
+                    table_name: str = "scruby_" + str(uuid.uuid4()).replace("-", "")[:16]
+                    text_field_name: str = full_text_filter[0]
                     doc_dict: dict[str, Any] = orjson.loads(val)
-                    text_field_dict: dict[str, Any] = {
-                        key: val or "" for key, val in doc_dict.items() if key in text_field_list
-                    }
-                    table_fields: str = ",".join([f"{field_name} text" for field_name in text_field_list])
+                    text_field_content = doc_dict[text_field_name]
+                    table_field: str = f"{text_field_name} text"
                     lang_code: str = lang_morphology[0]  # noqa: F841
                     morphology: str = lang_morphology[1]
                     # Enter a context with an instance of the API client
@@ -78,15 +76,17 @@ class FullText(ScrubyPlugin):
                         search_api = manticoresearch.SearchApi(api_client)
                         utils_api = manticoresearch.UtilsApi(api_client)
                         try:
-                            sql_str = f"CREATE TABLE {table_name}({table_fields}) morphology = '{morphology}'"
+                            sql_str = f"CREATE TABLE {table_name}({table_field}) morphology = '{morphology}'"
                             utils_api.sql(sql_str)
                             # Performs a search on a table
                             insert_request = manticoresearch.InsertDocumentRequest(
                                 table=table_name,
-                                doc=text_field_dict,
+                                doc={text_field_name: text_field_content},
                             )
                             index_api.insert(insert_request)
-                            search_query = manticoresearch.SearchQuery(match_phrase=full_text_filter)
+                            search_query = manticoresearch.SearchQuery(
+                                match_phrase={text_field_name: full_text_filter[1]},
+                            )
                             search_request = manticoresearch.SearchRequest(
                                 table=table_name,
                                 query=search_query,
@@ -104,7 +104,7 @@ class FullText(ScrubyPlugin):
     async def find_one(
         self,
         lang_morphology: tuple[str, str],
-        full_text_filter: dict[str, str],
+        full_text_filter: tuple[str, str],
         filter_fn: Callable = lambda _: True,
     ) -> Any | None:
         """Find a one document that matches the filter, using full-text search.
@@ -115,9 +115,9 @@ class FullText(ScrubyPlugin):
 
         Args:
             lang_morphology (tuple[str, str]): Tuple with code of language and morphology.
-            full_text_filter (dict[str, str]): Filter for full-text search.
-                                               Key -> name of text field.
-                                               Value -> text query.
+            full_text_filter (tuple[str, str]): Filter for full-text search.
+                                                full_text_filter[0] -> name of text field.
+                                                full_text_filter[1] -> text query.
             filter_fn (Callable): A function that execute the conditions of filtering.
 
         Returns:
@@ -153,7 +153,7 @@ class FullText(ScrubyPlugin):
     async def find_many(
         self,
         lang_morphology: tuple[str, str],
-        full_text_filter: dict[str, str],
+        full_text_filter: tuple[str, str],
         filter_fn: Callable = lambda _: True,
         limit_docs: int = 100,
         page_number: int = 1,
@@ -166,9 +166,9 @@ class FullText(ScrubyPlugin):
 
         Args:
             lang_morphology (tuple[str, str]): Tuple with code of language and morphology.
-            full_text_filter (dict[str, str]): Filter for full-text search.
-                                               Key -> name of text field.
-                                               Value -> text query.
+            full_text_filter (tuple[str, str]): Filter for full-text search.
+                                                full_text_filter[0] -> name of text field.
+                                                full_text_filter[1] -> text query.
             filter_fn (Callable): A function that execute the conditions of filtering.
                                   By default it searches for all documents.
             limit_docs (int): Limiting the number of documents. By default = 100.

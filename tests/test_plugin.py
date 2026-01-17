@@ -12,6 +12,10 @@ from scruby_full_text import settings as full_text_settings
 
 pytestmark = pytest.mark.asyncio(loop_scope="module")
 
+# Full database deletion.
+# Hint: The main purpose is tests.
+Scruby.napalm()
+
 # Plugins connection.
 scruby_settings.PLUGINS = [
     FullText,
@@ -36,12 +40,8 @@ class Car(ScrubyModel):
 class TestPositive:
     """Positive tests."""
 
-    async def test_create_instance(self) -> None:
-        """Create instance of plugin."""
-        # Full database deletion.
-        # Hint: The main purpose is tests.
-        Scruby.napalm()
-        #
+    async def test_find_one(self) -> None:
+        """Test a `find_one` method."""
         # Get collection `Car`
         car_coll = await Scruby.collection(Car)
         # Create cars.
@@ -56,7 +56,7 @@ class TestPositive:
         # Find a car
         car: Car | None = await car_coll.plugins.fullText.find_one(
             lang_morphology=full_text_settings.LANG_FULL_TEXT_SEARCH.get("English"),
-            full_text_filter={"brand": "???", "model": "???"},
+            full_text_filter=("model", "EZ-6 3"),
         )
 
         assert car is None
