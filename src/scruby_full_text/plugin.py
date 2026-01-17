@@ -29,7 +29,7 @@ class FullText(ScrubyPlugin):
     @staticmethod
     def _task_find(
         branch_number: int,
-        lang_morphology: tuple[str, str],  # noqa: ARG004
+        lang_morphology: tuple[str, str],
         full_text_filter: dict[str, str],  # noqa: ARG004
         filter_fn: Callable,
         hash_reduce_left: str,
@@ -63,7 +63,8 @@ class FullText(ScrubyPlugin):
                 if filter_fn(doc):
                     table_name = ""
                     table_fields = "title text, price float"
-                    morphology = "lemmatize_en_all"
+                    lang_code = lang_morphology[0]  # noqa: F841
+                    morphology = lang_morphology[1]
                     # Enter a context with an instance of the API client
                     with manticoresearch.ApiClient(config) as api_client:
                         # Create instances of API classes
@@ -72,8 +73,9 @@ class FullText(ScrubyPlugin):
                         utils_api = manticoresearch.UtilsApi(api_client)
                         try:
                             utils_api.sql(f"CREATE TABLE {table_name}({table_fields}) morphology = '{morphology}'")
-                        except Exception:
+                        except Exception as err:
                             logging.exception("Exception when calling SearchApi.")
+                            raise Exception from err
                         finally:
                             utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
                     #
