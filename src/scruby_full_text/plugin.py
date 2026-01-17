@@ -9,6 +9,7 @@ __all__ = ("FullText",)
 
 import concurrent.futures
 import logging
+import uuid
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
@@ -61,7 +62,7 @@ class FullText(ScrubyPlugin):
             for _, val in data.items():
                 doc = class_model.model_validate_json(val)
                 if filter_fn(doc):
-                    table_name = ""
+                    table_name = str(uuid.uuid4())
                     table_fields = "title text, price float"
                     lang_code = lang_morphology[0]  # noqa: F841
                     morphology = lang_morphology[1]
