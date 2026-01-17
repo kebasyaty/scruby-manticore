@@ -62,25 +62,39 @@ class FullText(ScrubyPlugin):
             for _, val in data.items():
                 doc = class_model.model_validate_json(val)
                 if filter_fn(doc):
-                    table_name = str(uuid.uuid4())
-                    table_fields = "title text, price float"
-                    lang_code = lang_morphology[0]  # noqa: F841
-                    morphology = lang_morphology[1]
+                    table_name: str = str(uuid.uuid4())
+                    table_fields: str = "title text, price float"
+                    doc_dict: dict[str, Any] = orjson.loads(val)
+                    lang_code: str = lang_morphology[0]  # noqa: F841
+                    morphology: str = lang_morphology[1]
                     # Enter a context with an instance of the API client
                     with manticoresearch.ApiClient(config) as api_client:
                         # Create instances of API classes
-                        index_api = manticoresearch.IndexApi(api_client)  # noqa: F841
-                        search_api = manticoresearch.SearchApi(api_client)  # noqa: F841
+                        index_api = manticoresearch.IndexApi(api_client)
+                        search_api = manticoresearch.SearchApi(api_client)
                         utils_api = manticoresearch.UtilsApi(api_client)
                         try:
-                            utils_api.sql(f"CREATE TABLE {table_name}({table_fields}) morphology = '{morphology}'")
+                            sql_str = f"CREATE TABLE {table_name}({table_fields}) morphology = '{morphology}'"
+                            utils_api.sql(sql_str)
+                            # Performs a search on a table
+                            insert_request = manticoresearch.InsertDocumentRequest(
+                                table=table_name,
+                                doc=doc_dict,
+                            )
+                            index_api.insert(insert_request)
+                            search_query = manticoresearch.SearchQuery(query_string="@title ???")
+                            search_request = manticoresearch.SearchRequest(
+                                table=table_name,
+                                query=search_query,
+                            )
+                            search_response = search_api.search(search_request)
+                            if len(search_response.hits.hits) > 0:
+                                docs.append(doc)
                         except Exception as err:
                             logging.exception("Exception when calling SearchApi.")
                             raise Exception from err
                         finally:
                             utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
-                    #
-                    docs.append(doc)
         return docs or None
 
     async def find_one(
