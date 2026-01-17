@@ -44,7 +44,7 @@ class TestPositive:
     """Positive tests."""
 
     def test_supported_languages(self) -> None:
-        """Testing supported languages."""
+        """Test supported languages."""
         for lang, data in LANGUAGES.items():
             tmp = settings.LANG_FULL_TEXT_SEARCH.get(lang[0])
             tmp_2 = settings.LANG_FULL_TEXT_SEARCH.get(lang[1])
