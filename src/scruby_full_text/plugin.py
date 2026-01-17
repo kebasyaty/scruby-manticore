@@ -31,7 +31,7 @@ class FullText(ScrubyPlugin):
     def _task_find(
         branch_number: int,
         lang_morphology: tuple[str, str],
-        full_text_filter: dict[str, str],  # noqa: ARG004
+        full_text_filter: dict[str, str],
         filter_fn: Callable,
         hash_reduce_left: str,
         db_root: str,
@@ -82,7 +82,7 @@ class FullText(ScrubyPlugin):
                                 doc=doc_dict,
                             )
                             index_api.insert(insert_request)
-                            search_query = manticoresearch.SearchQuery(query_string="@title ???")
+                            search_query = manticoresearch.SearchQuery(match_phrase=full_text_filter)
                             search_request = manticoresearch.SearchRequest(
                                 table=table_name,
                                 query=search_query,
