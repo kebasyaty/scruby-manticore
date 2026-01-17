@@ -63,8 +63,9 @@ class FullText(ScrubyPlugin):
                 doc = class_model.model_validate_json(val)
                 if filter_fn(doc):
                     table_name: str = str(uuid.uuid4())
+                    test_field_list = full_text_filter.keys()
+                    doc_dict: dict[str, Any] = {key: val for key, val in orjson.loads(val) if key in test_field_list}
                     table_fields: str = "title text, price float"
-                    doc_dict: dict[str, Any] = orjson.loads(val)
                     lang_code: str = lang_morphology[0]  # noqa: F841
                     morphology: str = lang_morphology[1]
                     # Enter a context with an instance of the API client
