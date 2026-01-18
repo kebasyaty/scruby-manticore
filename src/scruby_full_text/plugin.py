@@ -93,7 +93,7 @@ class FullText(ScrubyPlugin):
                             if len(search_response.hits.hits) > 0:
                                 docs.append(doc)
                         except Exception as err:
-                            logging.exception("Exception when calling SearchApi.")
+                            logging.exception("Exception when calling SearchApi!")
                             raise Exception from err
                         finally:
                             await utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
@@ -131,21 +131,25 @@ class FullText(ScrubyPlugin):
         config = settings.CONFIG
         # Run quantum loop
         with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
-            for branch_number in branch_numbers:
-                future = executor.submit(
-                    search_task_fn,
-                    branch_number,
-                    morphology,
-                    full_text_filter,
-                    filter_fn,
-                    hash_reduce_left,
-                    db_root,
-                    class_model,
-                    config,
-                )
-                docs = await future.result()
-                if docs is not None:
-                    return docs[0]
+            try:
+                for branch_number in branch_numbers:
+                    future = executor.submit(
+                        search_task_fn,
+                        branch_number,
+                        morphology,
+                        full_text_filter,
+                        filter_fn,
+                        hash_reduce_left,
+                        db_root,
+                        class_model,
+                        config,
+                    )
+                    docs = await future.result()
+                    if docs is not None:
+                        return docs[0]
+            except Exception as err:
+                logging.exception("Exception when calling plugins.fullText.find_one()!")
+                raise Exception from err
         return None
 
     async def find_many(
@@ -191,28 +195,32 @@ class FullText(ScrubyPlugin):
         result: list[Any] = []
         # Run quantum loop
         with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
-            for branch_number in branch_numbers:
-                if number_docs_skippe == 0 and counter >= limit_docs:
-                    return result[:limit_docs]
-                future = executor.submit(
-                    search_task_fn,
-                    branch_number,
-                    morphology,
-                    full_text_filter,
-                    filter_fn,
-                    hash_reduce_left,
-                    db_root,
-                    class_model,
-                    config,
-                )
-                docs = await future.result()
-                if docs is not None:
-                    for doc in docs:
-                        if number_docs_skippe == 0:
-                            if counter >= limit_docs:
-                                return result[:limit_docs]
-                            result.append(doc)
-                            counter += 1
-                        else:
-                            number_docs_skippe -= 1
+            try:
+                for branch_number in branch_numbers:
+                    if number_docs_skippe == 0 and counter >= limit_docs:
+                        return result[:limit_docs]
+                    future = executor.submit(
+                        search_task_fn,
+                        branch_number,
+                        morphology,
+                        full_text_filter,
+                        filter_fn,
+                        hash_reduce_left,
+                        db_root,
+                        class_model,
+                        config,
+                    )
+                    docs = await future.result()
+                    if docs is not None:
+                        for doc in docs:
+                            if number_docs_skippe == 0:
+                                if counter >= limit_docs:
+                                    return result[:limit_docs]
+                                result.append(doc)
+                                counter += 1
+                            else:
+                                number_docs_skippe -= 1
+            except Exception as err:
+                logging.exception("Exception when calling plugins.fullText.find_many()!")
+                raise Exception from err
         return result or None
