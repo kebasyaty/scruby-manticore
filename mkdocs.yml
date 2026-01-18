@@ -20,11 +20,6 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
-    # Extra:
-    - navigation.instant
-    - navigation.instant.progress
-    - navigation.tabs
-    - navigation.tabs.sticky
     # Minimum:
     - navigation.tracking
     - navigation.sections
@@ -86,4 +81,6 @@ nav:
   - Scruby-Full-Text: index.md
   - Installation: pages/installation.md
   - Usage: pages/usage.md
-  - Details: pages/details.md
+  - Ianguages: pages/languages.md
+  - Settings: pages/settings.md
+  - Plugin: pages/plugin.md

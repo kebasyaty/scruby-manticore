@@ -1,11 +1,11 @@
 [project]
 name = "scruby-full-text"
-version = "0.1.0"
+version = "0.2.0"
 description = "Full-text search with Manticore Search."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
-license = "GPL-3.0-or-later"
-license-files = ["LICENSE"]
+license = "MIT or GPL-3.0-or-later"
+license-files = ["MIT-LICENSE", "GPL-3.0-LICENSE"]
 requires-python = ">=3.12,<4.0"
 keywords = ["manticore", "search", "database", "scruby", "plugin"]
 classifiers = [
