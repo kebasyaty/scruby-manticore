@@ -131,6 +131,7 @@ class TestPositive:
         car_2: Car | None = await car_coll.plugins.fullText.find_one(
             morphology=full_text_settings.MORPHOLOGY.get("English"),
             full_text_filter=("model", "EZ-6 9"),
+            filter_fn=lambda doc: doc.brand == "Mazda",
         )
 
         assert car_2.model == "EZ-6 9"
@@ -165,6 +166,7 @@ class TestPositive:
         car_list_2: list[Car] | None = await car_coll.plugins.fullText.find_many(
             morphology=full_text_settings.MORPHOLOGY.get("en"),
             full_text_filter=("description", "future of automotive"),
+            filter_fn=lambda doc: doc.brand == "Mazda",
         )
         assert car_list_2 is not None
         assert len(car_list_2 or []) == 9
