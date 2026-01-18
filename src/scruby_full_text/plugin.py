@@ -64,9 +64,12 @@ class FullText(ScrubyPlugin):
                 if filter_fn(doc):
                     table_name: str = "scruby_" + str(uuid.uuid4()).replace("-", "_")[:8]
                     text_field_name: str = full_text_filter[0]
-                    doc_dict: dict[str, Any] = orjson.loads(val)
-                    text_field_content = doc_dict[text_field_name]
                     table_field: str = f"{text_field_name} text"
+                    text_field_content = getattr(doc, text_field_name)
+                    assert isinstance(text_field_content, (str, type(None))), (
+                        "Error: full_text_filter[0] ",
+                        "must be the name of an existing text field!",
+                    )
                     # Enter a context with an instance of the API client
                     async with manticoresearch.ApiClient(config) as api_client:
                         # Create instances of API classes
@@ -79,7 +82,7 @@ class FullText(ScrubyPlugin):
                             # Performs a search on a table
                             insert_request = manticoresearch.InsertDocumentRequest(
                                 table=table_name,
-                                doc={text_field_name: text_field_content},
+                                doc={text_field_name: text_field_content or ""},
                             )
                             await index_api.insert(insert_request)
                             search_query = manticoresearch.SearchQuery(
