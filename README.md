@@ -127,6 +127,7 @@ def main() -> None:
     car = await car_coll.plugins.fullText.find_one(
         morphology=full_text_settings.MORPHOLOGY.get("English"),  # 'English' or 'en'
         full_text_filter=("model", "EZ-6 9"),
+        # filter_fn=lambda doc: doc.brand == "Mazda",
     )
     if car is not None:
       pp(car)
@@ -137,6 +138,7 @@ def main() -> None:
     car_list = await car_coll.plugins.fullText.find_many(
         morphology=full_text_settings.MORPHOLOGY.get("en"),  # 'en' or 'English'
         full_text_filter=("description", "future of automotive"),
+        # filter_fn=lambda doc: doc.brand == "Mazda",
     )
     if car_list is not None:
       pp(car_list)
