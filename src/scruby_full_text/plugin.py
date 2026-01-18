@@ -67,8 +67,7 @@ class FullText(ScrubyPlugin):
                     table_field: str = f"{text_field_name} text"
                     text_field_content = getattr(doc, text_field_name)
                     assert isinstance(text_field_content, (str, type(None))), (
-                        "Error: full_text_filter[0] ",
-                        "must be the name of an existing text field!",
+                        "Error: full_text_filter[0] must be the name of an existing text field!",
                     )
                     # Enter a context with an instance of the API client
                     async with manticoresearch.ApiClient(config) as api_client:

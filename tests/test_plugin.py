@@ -34,13 +34,80 @@ class Car(ScrubyModel):
     )
 
 
+class TestNegative:
+    """Negative tests."""
+
+    @pytest.mark.xfail(
+        raises=(AttributeError, Exception),
+        reason="Error: 'Car' object has no attribute 'non_existent_field'",
+        strict=True,
+    )
+    async def test_full_text_filter_field_name(self) -> None:
+        """Invalid full_text_filter[0]->field name."""
+        # Delete DB.
+        Scruby.napalm()
+        #
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Create car.
+        car = Car(
+            brand="Mazda",
+            model="EZ-6",
+            year=2025,
+            power_reserve=600,
+            description="Electric cars are the future of the global automotive industry.",
+        )
+        # add to database
+        await car_coll.add_doc(car)
+
+        await car_coll.plugins.fullText.find_one(
+            morphology=full_text_settings.LANG_MORPHOLOGY.get("English"),
+            full_text_filter=("non_existent_field", "Some query string"),
+        )
+        #
+        # Delete DB.
+        Scruby.napalm()
+
+    @pytest.mark.xfail(
+        raises=(AssertionError, Exception),
+        reason="Error: full_text_filter[0] must be the name of an existing text field!'",
+        strict=True,
+    )
+    async def test_full_text_filter_field_type(self) -> None:
+        """Invalid full_text_filter[0]->field type."""
+        # Delete DB.
+        Scruby.napalm()
+        #
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Create car.
+        car = Car(
+            brand="Mazda",
+            model="EZ-6",
+            year=2025,
+            power_reserve=600,
+            description="Electric cars are the future of the global automotive industry.",
+        )
+        # add to database
+        await car_coll.add_doc(car)
+
+        await car_coll.plugins.fullText.find_one(
+            morphology=full_text_settings.LANG_MORPHOLOGY.get("English"),
+            full_text_filter=("year", "Some query string"),
+        )
+        #
+        # Delete DB.
+        Scruby.napalm()
+
+
 class TestPositive:
     """Positive tests."""
 
     async def test_find_one(self) -> None:
         """Test a `find_one` method."""
-        # Full database deletion.
-        # Hint: The main purpose is tests.
+        # Delete DB.
         Scruby.napalm()
         #
         # Get collection `Car`
@@ -70,14 +137,12 @@ class TestPositive:
 
         assert car_2.model == "EZ-6 9"
         #
-        # Full database deletion.
-        # Hint: The main purpose is tests.
+        # Delete DB.
         Scruby.napalm()
 
     async def test_find_many(self) -> None:
         """Test a `find_many` method."""
-        # Full database deletion.
-        # Hint: The main purpose is tests.
+        # Delete DB.
         Scruby.napalm()
         #
         # Get collection `Car`
@@ -106,6 +171,5 @@ class TestPositive:
         assert car_list_2 is not None
         assert len(car_list_2 or []) == 9
         #
-        # Full database deletion.
-        # Hint: The main purpose is tests.
+        # Delete DB.
         Scruby.napalm()
