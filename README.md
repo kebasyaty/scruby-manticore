@@ -24,7 +24,7 @@
       <a href="https://github.com/kebasyaty/scruby-full-text/blob/main/LICENSE" alt="GitHub license"><img src="https://img.shields.io/github/license/kebasyaty/scruby-full-text" alt="GitHub license"></a>
     </p>
     <p align="center">
-      DESCRIPTION...
+      Scruby-Full-Text - это плагин для проекта <a href="https://github.com/kebasyaty/scruby" alt="Scruby">Scruby</a>
     </p>
   </p>
 </div>
