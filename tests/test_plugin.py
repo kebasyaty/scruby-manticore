@@ -23,8 +23,9 @@ class Car(ScrubyModel):
 
     brand: str = Field(strict=True, frozen=True)
     model: str = Field(strict=True, frozen=True)
-    year: int = Field(strict=True)
-    power_reserve: int = Field(strict=True)
+    year: int = Field(strict=True, frozen=True)
+    power_reserve: int = Field(strict=True, frozen=True)
+    description: str = Field(strict=True)
     # key is always at bottom
     key: str = Field(
         strict=True,
@@ -51,6 +52,7 @@ class TestPositive:
                 model=f"EZ-6 {num}",
                 year=2025,
                 power_reserve=600,
+                description="Electric cars are the future of the global automotive industry.",
             )
             await car_coll.add_doc(car)
         # Find a car
@@ -87,18 +89,19 @@ class TestPositive:
                 model=f"EZ-6 {num}",
                 year=2025,
                 power_reserve=600,
+                description="Electric cars are the future of the global automotive industry.",
             )
             await car_coll.add_doc(car)
         # Find a car
         car_list: list[Car] | None = await car_coll.plugins.fullText.find_many(
             morphology=full_text_settings.LANG_MORPHOLOGY.get("en"),
-            full_text_filter=("brand", "SONY"),
+            full_text_filter=("description", "the future of all humanity"),
         )
         assert car_list is None
 
         car_list_2: list[Car] | None = await car_coll.plugins.fullText.find_many(
             morphology=full_text_settings.LANG_MORPHOLOGY.get("en"),
-            full_text_filter=("brand", "Mazda"),
+            full_text_filter=("description", "future of automotive"),
         )
         assert car_list_2 is not None
         assert len(car_list_2 or []) == 9
