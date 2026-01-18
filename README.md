@@ -47,6 +47,34 @@ Online browsable documentation is available at [https://kebasyaty.github.io/scru
 uv add scruby-full-text
 ```
 
+## Install Manticore Search
+
+For more information, see the <a href="https://manticoresearch.com/install/" alt="Install">documentation</a>.
+
+- **Fedora 42 or later**
+
+```shell
+# Install the repository:
+sudo tee /etc/yum.repos.d/manticore.repo << "EOF" > /dev/null
+[manticore]
+name=Manticore Repository
+baseurl=http://repo.manticoresearch.com/repository/manticoresearch/release/centos/10/$basearch
+gpgcheck=1
+enabled=1
+gpgkey=https://repo.manticoresearch.com/GPG-KEY-SHA256-manticore
+EOF
+
+# Install Manticore Search:
+sudo dnf install manticore manticore-extra
+# Install English, German, and Russian lemmatizers:
+sudo dnf install manticore-language-packs
+
+# Run Manticore Search:
+sudo systemctl start manticore
+sudo systemctl enable manticore
+sudo systemctl status manticore --no-pager -l
+```
+
 ## Usage
 
 See more examples here [https://kebasyaty.github.io/scruby-full-text/latest/pages/usage/](https://kebasyaty.github.io/scruby-full-text/latest/pages/usage/ "Examples").
