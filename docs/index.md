@@ -28,7 +28,7 @@
 <hr>
 
 <p>
-Scruby-Full-Text is a plugin for the <a href="https://github.com/kebasyaty/scruby" alt="Scruby">Scruby</a> project.
+Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" alt="Scruby">Scruby</a> project.
 </p>
 
 #### Requirements
