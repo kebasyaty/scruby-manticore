@@ -11,7 +11,7 @@ import concurrent.futures
 import logging
 import uuid
 from collections.abc import Callable
-from typing import Any
+from typing import Any, final
 
 import manticoresearch
 import orjson
@@ -21,6 +21,7 @@ from scruby_plugin import ScrubyPlugin
 from scruby_full_text import settings
 
 
+@final
 class FullText(ScrubyPlugin):
     """Plugin for Scruby based on Manticore Search."""
 
