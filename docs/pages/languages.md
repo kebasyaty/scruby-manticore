@@ -1,6 +1,6 @@
 #### Supported languages
 
-For more information, see the <a href="https://manual.manticoresearch.com/Creating_a_table/NLP_and_tokenization/" alt="Supported languages">documentation/a>.
+For more information, see the <a href="https://manual.manticoresearch.com/Creating_a_table/NLP_and_tokenization/" alt="Supported languages">documentation</a>.
 
 <div>
    <table>
