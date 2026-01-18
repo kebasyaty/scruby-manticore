@@ -8,7 +8,6 @@ from __future__ import annotations
 __all__ = ("FullText",)
 
 import concurrent.futures
-import logging
 import uuid
 from collections.abc import Callable
 from typing import Any, final
@@ -72,11 +71,12 @@ class FullText(ScrubyPlugin):
                     )
                     # Enter a context with an instance of the API client
                     async with manticoresearch.ApiClient(config) as api_client:
-                        # Create instances of API classes
-                        index_api = manticoresearch.IndexApi(api_client)
-                        search_api = manticoresearch.SearchApi(api_client)
-                        utils_api = manticoresearch.UtilsApi(api_client)
                         try:
+                            # Create instances of API classes
+                            index_api = manticoresearch.IndexApi(api_client)
+                            search_api = manticoresearch.SearchApi(api_client)
+                            utils_api = manticoresearch.UtilsApi(api_client)
+                            # Create table
                             sql_str = f"CREATE TABLE {table_name}({table_field}) morphology = '{morphology}'"
                             await utils_api.sql(sql_str)
                             # Performs a search on a table
@@ -95,9 +95,7 @@ class FullText(ScrubyPlugin):
                             search_response = await search_api.search(search_request)
                             if len(search_response.hits.hits) > 0:
                                 docs.append(doc)
-                        except Exception as err:
-                            logging.exception("Exception when calling SearchApi!")
-                            raise Exception from err
+                            # Delete table
                         finally:
                             await utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
         return docs or None
@@ -134,25 +132,21 @@ class FullText(ScrubyPlugin):
         config = settings.CONFIG
         # Run quantum loop
         with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
-            try:
-                for branch_number in branch_numbers:
-                    future = executor.submit(
-                        search_task_fn,
-                        branch_number,
-                        morphology,
-                        full_text_filter,
-                        filter_fn,
-                        hash_reduce_left,
-                        db_root,
-                        class_model,
-                        config,
-                    )
-                    docs = await future.result()
-                    if docs is not None:
-                        return docs[0]
-            except Exception as err:
-                logging.exception("Exception when calling plugins.fullText.find_one()!")
-                raise Exception from err
+            for branch_number in branch_numbers:
+                future = executor.submit(
+                    search_task_fn,
+                    branch_number,
+                    morphology,
+                    full_text_filter,
+                    filter_fn,
+                    hash_reduce_left,
+                    db_root,
+                    class_model,
+                    config,
+                )
+                docs = await future.result()
+                if docs is not None:
+                    return docs[0]
         return None
 
     async def find_many(
@@ -198,32 +192,28 @@ class FullText(ScrubyPlugin):
         result: list[Any] = []
         # Run quantum loop
         with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
-            try:
-                for branch_number in branch_numbers:
-                    if number_docs_skippe == 0 and counter >= limit_docs:
-                        return result[:limit_docs]
-                    future = executor.submit(
-                        search_task_fn,
-                        branch_number,
-                        morphology,
-                        full_text_filter,
-                        filter_fn,
-                        hash_reduce_left,
-                        db_root,
-                        class_model,
-                        config,
-                    )
-                    docs = await future.result()
-                    if docs is not None:
-                        for doc in docs:
-                            if number_docs_skippe == 0:
-                                if counter >= limit_docs:
-                                    return result[:limit_docs]
-                                result.append(doc)
-                                counter += 1
-                            else:
-                                number_docs_skippe -= 1
-            except Exception as err:
-                logging.exception("Exception when calling plugins.fullText.find_many()!")
-                raise Exception from err
+            for branch_number in branch_numbers:
+                if number_docs_skippe == 0 and counter >= limit_docs:
+                    return result[:limit_docs]
+                future = executor.submit(
+                    search_task_fn,
+                    branch_number,
+                    morphology,
+                    full_text_filter,
+                    filter_fn,
+                    hash_reduce_left,
+                    db_root,
+                    class_model,
+                    config,
+                )
+                docs = await future.result()
+                if docs is not None:
+                    for doc in docs:
+                        if number_docs_skippe == 0:
+                            if counter >= limit_docs:
+                                return result[:limit_docs]
+                            result.append(doc)
+                            counter += 1
+                        else:
+                            number_docs_skippe -= 1
         return result or None
