@@ -24,7 +24,7 @@
       <a href="https://github.com/kebasyaty/scruby-full-text/blob/main/LICENSE" alt="GitHub license"><img src="https://img.shields.io/github/license/kebasyaty/scruby-full-text" alt="GitHub license"></a>
     </p>
     <p align="center">
-      Scruby-Full-Text is a plugin for the <a href="https://pypi.python.org/pypi/scruby-full-text/" alt="Scruby">Scruby</a> project.
+      Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" alt="Scruby">Scruby</a> project.
     </p>
   </p>
 </div>
