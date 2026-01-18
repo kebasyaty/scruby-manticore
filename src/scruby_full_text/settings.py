@@ -1,5 +1,6 @@
 # Scruby-Full-Text - Full-text search with Manticore Search.
 # Copyright (c) 2026 Gennady Kostyunin
+# SPDX-License-Identifier: MIT
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Plugin settings.
 
