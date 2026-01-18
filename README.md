@@ -2,7 +2,7 @@
   <p align="center">
     <a href="https://github.com/kebasyaty/scruby-full-text">
       <img
-        id="logo"
+        height="80"
         alt="Logo"
         src="https://raw.githubusercontent.com/kebasyaty/scruby-full-text/main/assets/logo.svg">
     </a>
