@@ -8,7 +8,7 @@
     </a>
   </p>
   <p>
-    <h3>Title...</h3>
+    <h3>Full-text search with Manticore Search.</h3>
     <p align="center">
       <a href="https://github.com/kebasyaty/scruby-full-text/actions/workflows/test.yml" alt="Build Status"><img src="https://github.com/kebasyaty/scruby-full-text/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
       <a href="https://kebasyaty.github.io/scruby-full-text/" alt="Docs"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"></a>
@@ -28,7 +28,7 @@
 <hr>
 
 <p>
-DESCRIPTION...
+Scruby-Full-Text is a plugin for the <a href="https://github.com/kebasyaty/scruby" alt="Scruby">Scruby</a> project.
 </p>
 
 #### Requirements
