@@ -6,6 +6,8 @@ uv add scruby-full-text
 
 #### Install Manticore Search
 
+For more information, see the <a href="https://manticoresearch.com/install/" alt="Install">documentation</a>.
+
 ##### Fedora 42 or later
 
 ```shell
