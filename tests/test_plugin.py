@@ -71,3 +71,34 @@ class TestPositive:
         # Full database deletion.
         # Hint: The main purpose is tests.
         Scruby.napalm()
+
+    async def test_find_many(self) -> None:
+        """Test a `find_many` method."""
+        # Get collection `Car`
+        car_coll = await Scruby.collection(Car)
+        # Create cars.
+        for num in range(1, 10):
+            car = Car(
+                brand="Mazda",
+                model=f"EZ-6 {num}",
+                year=2025,
+                power_reserve=600,
+            )
+            await car_coll.add_doc(car)
+        # Find a car
+        car_list: list[Car] | None = await car_coll.plugins.fullText.find_many(
+            lang_morphology=full_text_settings.LANG_FULL_TEXT_SEARCH.get("English"),
+            full_text_filter=("brand", "SONY"),
+        )
+        assert car_list is None
+
+        car_list_2: list[Car] | None = await car_coll.plugins.fullText.find_many(
+            lang_morphology=full_text_settings.LANG_FULL_TEXT_SEARCH.get("English"),
+            full_text_filter=("brand", "Mazda"),
+        )
+        assert car_list_2 is not None
+        assert len(car_list_2 or []) == 9
+        #
+        # Full database deletion.
+        # Hint: The main purpose is tests.
+        Scruby.napalm()
