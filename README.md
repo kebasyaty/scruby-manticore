@@ -21,7 +21,8 @@
       <a href="https://docs.astral.sh/ruff/" alt="Code style: Ruff"><img src="https://img.shields.io/badge/code%20style-Ruff-FDD835.svg" alt="Code style: Ruff"></a>
       <a href="https://pypi.org/project/scruby-full-text"><img src="https://img.shields.io/pypi/format/scruby-full-text" alt="Format"></a>
       <a href="https://pepy.tech/projects/scruby-full-text"><img src="https://static.pepy.tech/badge/scruby-full-text" alt="PyPI Downloads"></a>
-      <a href="https://github.com/kebasyaty/scruby-full-text/blob/main/LICENSE" alt="GitHub license"><img src="https://img.shields.io/github/license/kebasyaty/scruby-full-text" alt="GitHub license"></a>
+      <a href="https://github.com/kebasyaty/scruby-full-text/blob/main/MIT-LICENSE" alt="License: MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+      <a href="https://github.com/kebasyaty/scruby-full-text/blob/main/GPL-3.0-LICENSE" alt="License: GPL v3"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a>
     </p>
     <p align="center">
       Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" alt="Scruby">Scruby</a> project.
