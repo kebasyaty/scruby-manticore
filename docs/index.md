@@ -42,5 +42,5 @@ Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" 
 #### License
 
 _This project is licensed under the_ [MIT](https://github.com/kebasyaty/scruby-full-text/blob/main/MIT-LICENSE "MIT").
-
+<br>
 _This project is licensed under the_ [GPL-3.0-or-later](https://github.com/kebasyaty/scruby-full-text/blob/main/GPL-3.0-LICENSE "GPL-3.0-or-later").
