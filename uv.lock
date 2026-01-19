@@ -682,7 +682,7 @@ wheels = [
 
 [[package]]
 name = "mkdocstrings"
-version = "1.0.0"
+version = "1.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jinja2" },
@@ -692,9 +692,9 @@ dependencies = [
     { name = "mkdocs-autorefs" },
     { name = "pymdown-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/13/10bbf9d56565fd91b91e6f5a8cd9b9d8a2b101c4e8ad6eeafa35a706301d/mkdocstrings-1.0.0.tar.gz", hash = "sha256:351a006dbb27aefce241ade110d3cd040c1145b7a3eb5fd5ac23f03ed67f401a", size = 101086, upload-time = "2025-11-27T15:39:40.534Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/bd/ec/680e3bc7c88704d3fb9c658a517ec10f2f2aed3b9340136978675e581688/mkdocstrings-1.0.1.tar.gz", hash = "sha256:caa7d311c85ac0a0674831725ecfdeee4348e3b8a2c91ab193ee319a41dbeb3d", size = 100794, upload-time = "2026-01-19T11:36:24.429Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/fc/80aa31b79133634721cf7855d37b76ea49773599214896f2ff10be03de2a/mkdocstrings-1.0.0-py3-none-any.whl", hash = "sha256:4c50eb960bff6e05dfc631f6bc00dfabffbcb29c5ff25f676d64daae05ed82fa", size = 35135, upload-time = "2025-11-27T15:39:39.301Z" },
+    { url = "https://files.pythonhosted.org/packages/d0/f9/ecd3e5cf258d63eddc13e354bd090df3aa458b64be50d737d52a8ad9df22/mkdocstrings-1.0.1-py3-none-any.whl", hash = "sha256:10deb908e310e6d427a5b8f69026361dac06b77de860f46043043e26f121db02", size = 35245, upload-time = "2026-01-19T11:36:23.067Z" },
 ]
 
 [package.optional-dependencies]
@@ -1327,7 +1327,7 @@ wheels = [
 
 [[package]]
 name = "scruby"
-version = "0.33.1"
+version = "0.33.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -1338,12 +1338,12 @@ dependencies = [
     { name = "xloft" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/77/bc/bea4b1608e358ffe77f650230d83b16c75c08759c22a064eac5f1aeb4f23/scruby-0.33.1-py3-none-any.whl", hash = "sha256:274c68c797489e3bdc4763f2ba57f51f6b0d257e611460d9ef352a09529f7721", size = 31709, upload-time = "2026-01-18T01:15:01.643Z" },
+    { url = "https://files.pythonhosted.org/packages/fb/05/cd7980490df54beb221608853f45079f58a938ccf4127c231e8c707cc223/scruby-0.33.3-py3-none-any.whl", hash = "sha256:a33e039975166dae8dca9139ce9e44d4aefe058a4a72ec9a6d47a17efccbcc5c", size = 32639, upload-time = "2026-01-18T23:38:49.214Z" },
 ]
 
 [[package]]
 name = "scruby-full-text"
-version = "0.2.5"
+version = "0.2.6"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },
@@ -1405,10 +1405,10 @@ types = []
 
 [[package]]
 name = "scruby-plugin"
-version = "0.2.3"
+version = "0.2.4"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ba/6d/8fa78faa78daef0960f237c39dac5b378a725fe8f0e2086076dc08521df6/scruby_plugin-0.2.3-py3-none-any.whl", hash = "sha256:9a282944a04bd529a6a1e9ea801bc3f74935a67a98f49a28e0c31c863e9d6119", size = 4191, upload-time = "2026-01-13T07:51:31.624Z" },
+    { url = "https://files.pythonhosted.org/packages/ee/d4/a117e6b33ff47970e16751a505cd47e68525fcd498bcf896b860431fc250/scruby_plugin-0.2.4-py3-none-any.whl", hash = "sha256:d42e6421c93ad8e9c2b6e2d25baea4c2b0b04e72ad704f35e21983a51bcaed81", size = 4558, upload-time = "2026-01-19T14:47:24.632Z" },
 ]
 
 [[package]]
@@ -1508,10 +1508,10 @@ wheels = [
 
 [[package]]
 name = "xloft"
-version = "0.10.3"
+version = "0.10.5"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/86/ec/e7995a07703c5617f6330a7455acdaa54274e29314da938b6aaa009ef715/xloft-0.10.3-py3-none-any.whl", hash = "sha256:b064290afa982b3c96f6c38070d67d65ef7aa41ad485ec8015bb07ee7a640e9f", size = 12874, upload-time = "2026-01-16T19:33:51.224Z" },
+    { url = "https://files.pythonhosted.org/packages/96/88/def76589675785c6bd1af1372c7e09eac97c3030cf401085136433801f12/xloft-0.10.5-py3-none-any.whl", hash = "sha256:12c9e77dca13b09af12c86410ae10501ac6edab513b021295930a32627517494", size = 13048, upload-time = "2026-01-19T16:22:45.904Z" },
 ]
 
 [[package]]
