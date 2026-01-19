@@ -60,45 +60,45 @@ class FullText(ScrubyPlugin):
         if await leaf_path.exists():
             data_json: bytes = await leaf_path.read_bytes()
             data: dict[str, str] = orjson.loads(data_json) or {}
-            for _, val in data.items():
-                doc = class_model.model_validate_json(val)
-                if filter_fn(doc):
-                    table_name: str = "scruby_" + str(uuid.uuid4()).replace("-", "_")[:8]
-                    text_field_name: str = full_text_filter[0]
-                    table_field: str = f"{text_field_name} text"
-                    text_field_content = getattr(doc, text_field_name)
-                    assert isinstance(text_field_content, (str, type(None))), (
-                        "Error: full_text_filter[0] must be the name of an existing text field!",
-                    )
-                    # Enter a context with an instance of the API client
-                    async with manticoresearch.ApiClient(config) as api_client:
-                        try:
-                            # Create instances of API classes
-                            index_api = manticoresearch.IndexApi(api_client)
-                            search_api = manticoresearch.SearchApi(api_client)
-                            utils_api = manticoresearch.UtilsApi(api_client)
-                            # Create table
-                            sql_str = f"CREATE TABLE {table_name}({table_field}) morphology = '{morphology}'"
-                            await utils_api.sql(sql_str)
-                            # Performs a search on a table
-                            insert_request = manticoresearch.InsertDocumentRequest(
-                                table=table_name,
-                                doc={text_field_name: text_field_content or ""},
-                            )
-                            await index_api.insert(insert_request)
-                            search_query = manticoresearch.SearchQuery(
-                                query_string=f"@{text_field_name} {full_text_filter[1]}",
-                            )
-                            search_request = manticoresearch.SearchRequest(
-                                table=table_name,
-                                query=search_query,
-                            )
-                            search_response = await search_api.search(search_request)
-                            if len(search_response.hits.hits) > 0:
-                                docs.append(doc)
-                            # Delete table
-                        finally:
-                            await utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
+            table_name: str = "scruby_" + str(uuid.uuid4()).replace("-", "_")[:8]
+            text_field_name: str = full_text_filter[0]
+            table_field: str = f"{text_field_name} text"
+            search_query = manticoresearch.SearchQuery(
+                query_string=f"@{text_field_name} {full_text_filter[1]}",
+            )
+            search_request = manticoresearch.SearchRequest(
+                table=table_name,
+                query=search_query,
+            )
+            # Enter a context with an instance of the API client
+            async with manticoresearch.ApiClient(config) as api_client:
+                # Create instances of API classes
+                index_api = manticoresearch.IndexApi(api_client)
+                search_api = manticoresearch.SearchApi(api_client)
+                utils_api = manticoresearch.UtilsApi(api_client)
+                # Create table
+                await utils_api.sql(f"CREATE TABLE {table_name}({table_field}) morphology = '{morphology}'")
+                # Start search
+                for _, val in data.items():
+                    doc = class_model.model_validate_json(val)
+                    if filter_fn(doc):
+                        text_field_content = getattr(doc, text_field_name)
+                        assert isinstance(text_field_content, (str, type(None))), (
+                            "Error: full_text_filter[0] must be the name of an existing text field!",
+                        )
+                        # Performs a search on a table
+                        insert_request = manticoresearch.InsertDocumentRequest(
+                            table=table_name,
+                            doc={text_field_name: text_field_content or ""},
+                        )
+                        await index_api.insert(insert_request)
+                        search_response = await search_api.search(search_request)
+                        if len(search_response.hits.hits) > 0:
+                            docs.append(doc)
+                        # Clear table
+                        await utils_api.sql(f"TRUNCATE TABLE {table_name}")
+                # Delete table
+                await utils_api.sql(f"DROP TABLE IF EXISTS {table_name}")
         return docs or None
 
     async def find_one(
