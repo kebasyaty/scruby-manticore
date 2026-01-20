@@ -84,15 +84,13 @@ See more examples here [https://kebasyaty.github.io/scruby-full-text/latest/page
 import anyio
 from typing import Any
 from pydantic import Field
-from scruby import Scruby, ScrubyModel
-from scruby import settings as scruby_settings
-from scruby_full_text import FullText
-from scruby_full_text import settings as full_text_settings
+from scruby import Scruby, ScrubyModel, ScrubySettings
+from scruby_full_text import FullTextSearch, FullTextSettings
 from pprint import pprint as pp
 
 # Plugins connection.
-scruby_settings.PLUGINS = [
-    FullText,
+ScrubySettings.plugins = [
+    FullTextSearch,
 ]
 
 
@@ -125,8 +123,8 @@ def main() -> None:
         await car_coll.add_doc(car)
 
     # Find one car
-    car = await car_coll.plugins.fullText.find_one(
-        morphology=full_text_settings.MORPHOLOGY.get("English"),  # 'English' or 'en'
+    car = await car_coll.plugins.fullTextSearch.find_one(
+        morphology=FullTextSettings.morphology.get("English"),  # 'English' or 'en'
         full_text_filter=("model", "EZ-6 9"),
         # filter_fn=lambda doc: doc.brand == "Mazda",
     )
@@ -136,8 +134,8 @@ def main() -> None:
       print("Not Found")
 
     # Fand many cars
-    car_list = await car_coll.plugins.fullText.find_many(
-        morphology=full_text_settings.MORPHOLOGY.get("en"),  # 'en' or 'English'
+    car_list = await car_coll.plugins.fullTextSearch.find_many(
+        morphology=FullTextSettings.morphology.get("en"),  # 'en' or 'English'
         full_text_filter=("description", "future of automotive"),
         # filter_fn=lambda doc: doc.brand == "Mazda",
     )
