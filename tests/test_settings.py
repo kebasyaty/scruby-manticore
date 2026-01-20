@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from xloft import AliasDict
 
-from scruby_full_text import settings
+from scruby_full_text import FullTextSettings
 
 TEST_MORPHOLOGY = AliasDict(
     [
@@ -46,7 +46,7 @@ class TestPositive:
     def test_supported_languages(self) -> None:
         """Test supported languages."""
         for lang, morphology in TEST_MORPHOLOGY.items():
-            morphology_by_lang_name = settings.MORPHOLOGY.get(lang[0])
-            morphology_by_lang_code = settings.MORPHOLOGY.get(lang[1])
+            morphology_by_lang_name = FullTextSettings.morphology.get(lang[0])
+            morphology_by_lang_code = FullTextSettings.morphology.get(lang[1])
             assert morphology_by_lang_name == morphology
             assert morphology_by_lang_code == morphology
