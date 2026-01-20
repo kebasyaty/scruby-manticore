@@ -83,9 +83,6 @@ class FullTextSearch(ScrubyPlugin):
                     doc = class_model.model_validate_json(val)
                     if filter_fn(doc):
                         text_field_content = getattr(doc, text_field_name)
-                        assert isinstance(text_field_content, (str, type(None))), (
-                            "Error: full_text_filter[0] must be the name of an existing text field!",
-                        )
                         # Performs a search on a table
                         insert_request = manticoresearch.InsertDocumentRequest(
                             table=table_name,
@@ -123,8 +120,9 @@ class FullTextSearch(ScrubyPlugin):
         Returns:
             Document or None.
         """
-        # Variable initialization
+        # Get Scruby instance
         scruby = self.scruby()
+        # Variable initialization
         search_task_fn: Callable = self._task_find
         branch_numbers: range = range(scruby._max_number_branch)
         hash_reduce_left: int = scruby._hash_reduce_left
@@ -180,8 +178,9 @@ class FullTextSearch(ScrubyPlugin):
         """
         # The `page_number` parameter must not be less than one
         assert page_number > 0, "`find_many` => The `page_number` parameter must not be less than one."
-        # Variable initialization
+        # Get Scruby instance
         scruby = self.scruby()
+        # Variable initialization
         search_task_fn: Callable = self._task_find
         branch_numbers: range = range(scruby._max_number_branch)
         hash_reduce_left: int = scruby._hash_reduce_left
