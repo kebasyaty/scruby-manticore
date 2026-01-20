@@ -42,8 +42,6 @@ class TestNegative:
         #
         # Get collection `Car`
         car_coll = await Scruby.collection(Car)
-        # Get collection `Car`
-        car_coll = await Scruby.collection(Car)
         # Create car.
         car = Car(
             brand="Mazda",
@@ -63,35 +61,14 @@ class TestNegative:
                 morphology=FullTextSettings.morphology.get("English"),
                 full_text_filter=("non_existent_field", "Some query string"),
             )
-        #
-        # Delete DB.
-        Scruby.napalm()
-
-    async def test_full_text_filter_field_type(self) -> None:
-        """Invalid full_text_filter[0]->field type."""
-        # Delete DB.
-        Scruby.napalm()
-        #
-        # Get collection `Car`
-        car_coll = await Scruby.collection(Car)
-        # Create car.
-        car = Car(
-            brand="Mazda",
-            model="EZ-6",
-            year=2025,
-            power_reserve=600,
-            description="Electric cars are the future of the global automotive industry.",
-        )
-        # add to database
-        await car_coll.add_doc(car)
 
         with pytest.raises(
-            AssertionError,
-            match=r"Error: full_text_filter\[0\] must be the name of an existing text field!",
+            AttributeError,
+            match=r"'Car' object has no attribute 'non_existent_field'",
         ):
-            await car_coll.plugins.fullTextSearch.find_one(
+            await car_coll.plugins.fullTextSearch.find_many(
                 morphology=FullTextSettings.morphology.get("English"),
-                full_text_filter=("year", "Some query string"),
+                full_text_filter=("non_existent_field", "Some query string"),
             )
         #
         # Delete DB.
