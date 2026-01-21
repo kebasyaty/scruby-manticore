@@ -34,14 +34,14 @@ Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" 
 
 #### Requirements
 
-[View the list of requirements.](https://github.com/kebasyaty/scruby-full-text/blob/main/REQUIREMENTS.md "View the list of requirements.")
+[![Requirements](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/link-requirements.svg "Requirements")](https://github.com/kebasyaty/scruby-full-text/blob/v0/REQUIREMENTS.md "Requirements")
 
 #### Changelog
 
-[View the change history.](https://github.com/kebasyaty/scruby-full-text/blob/main/CHANGELOG.md "Changelog")
+[![Changelog](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/link-changelog.svg "Changelog")](https://github.com/kebasyaty/scruby-full-text/blob/v0/CHANGELOG.md "Changelog")
 
 #### License
 
-_This project is licensed under the_ [MIT](https://github.com/kebasyaty/scruby-full-text/blob/main/MIT-LICENSE "MIT").
-<br>
-_This project is licensed under the_ [GPL-3.0-or-later](https://github.com/kebasyaty/scruby-full-text/blob/main/GPL-3.0-LICENSE "GPL-3.0-or-later").
+[![MIT](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/link-mit.svg "MIT")](https://github.com/kebasyaty/scruby-full-text/blob/main/MIT-LICENSE "MIT")
+
+[![GPL-3.0](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/link-gpl-3.0-or-later.svg "GPL-3.0")](https://github.com/kebasyaty/scruby-full-text/blob/main/GPL-3.0-LICENSE "GPL-3.0")
