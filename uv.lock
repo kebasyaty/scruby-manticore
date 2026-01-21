@@ -499,11 +499,11 @@ dependencies = [
 
 [[package]]
 name = "markdown"
-version = "3.10"
+version = "3.10.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/7d/ab/7dd27d9d863b3376fcf23a5a13cb5d024aed1db46f963f1b5735ae43b3be/markdown-3.10.tar.gz", hash = "sha256:37062d4f2aa4b2b6b32aefb80faa300f82cc790cb949a35b8caede34f2b68c0e", size = 364931, upload-time = "2025-11-03T19:51:15.007Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b7/b1/af95bcae8549f1f3fd70faacb29075826a0d689a27f232e8cee315efa053/markdown-3.10.1.tar.gz", hash = "sha256:1c19c10bd5c14ac948c53d0d762a04e2fa35a6d58a6b7b1e6bfcbe6fefc0001a", size = 365402, upload-time = "2026-01-21T18:09:28.206Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/70/81/54e3ce63502cd085a0c556652a4e1b919c45a446bd1e5300e10c44c8c521/markdown-3.10-py3-none-any.whl", hash = "sha256:b5b99d6951e2e4948d939255596523444c0e677c669700b1d17aa4a8a464cb7c", size = 107678, upload-time = "2025-11-03T19:51:13.887Z" },
+    { url = "https://files.pythonhosted.org/packages/59/1b/6ef961f543593969d25b2afe57a3564200280528caa9bd1082eecdd7b3bc/markdown-3.10.1-py3-none-any.whl", hash = "sha256:867d788939fe33e4b736426f5b9f651ad0c0ae0ecf89df0ca5d1176c70812fe3", size = 107684, upload-time = "2026-01-21T18:09:27.203Z" },
 ]
 
 [[package]]
@@ -1162,11 +1162,11 @@ wheels = [
 
 [[package]]
 name = "pyparsing"
-version = "3.3.1"
+version = "3.3.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/33/c1/1d9de9aeaa1b89b0186e5fe23294ff6517fce1bc69149185577cd31016b2/pyparsing-3.3.1.tar.gz", hash = "sha256:47fad0f17ac1e2cad3de3b458570fbc9b03560aa029ed5e16ee5554da9a2251c", size = 1550512, upload-time = "2025-12-23T03:14:04.391Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f3/91/9c6ee907786a473bf81c5f53cf703ba0957b23ab84c264080fb5a450416f/pyparsing-3.3.2.tar.gz", hash = "sha256:c777f4d763f140633dcb6d8a3eda953bf7a214dc4eff598413c070bcdc117cbc", size = 6851574, upload-time = "2026-01-21T03:57:59.36Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8b/40/2614036cdd416452f5bf98ec037f38a1afb17f327cb8e6b652d4729e0af8/pyparsing-3.3.1-py3-none-any.whl", hash = "sha256:023b5e7e5520ad96642e2c6db4cb683d3970bd640cdf7115049a6e9c3682df82", size = 121793, upload-time = "2025-12-23T03:14:02.103Z" },
+    { url = "https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl", hash = "sha256:850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d", size = 122781, upload-time = "2026-01-21T03:57:55.912Z" },
 ]
 
 [[package]]
@@ -1327,7 +1327,7 @@ wheels = [
 
 [[package]]
 name = "scruby"
-version = "0.34.2"
+version = "0.34.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -1338,7 +1338,7 @@ dependencies = [
     { name = "xloft" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/53/1fdaf9bcde6e65535fe9d2b3c8b58571c3e77a24ae5d2f46c375ee4acdfc/scruby-0.34.2-py3-none-any.whl", hash = "sha256:5dabd73c044d3d6ea76243b0c336e2f7b512be33c2715aabc3db0ab66c424627", size = 32768, upload-time = "2026-01-20T20:20:37.422Z" },
+    { url = "https://files.pythonhosted.org/packages/bb/5f/489797cf1f0631dbcfec955f1e9ce3d32105d7c2ae82bcadf6efb1575578/scruby-0.34.3-py3-none-any.whl", hash = "sha256:94264db97d0a2540ced5a8eb6c6794b7e87677a014a7a13cf1732602d21a7d59", size = 32766, upload-time = "2026-01-21T18:54:02.845Z" },
 ]
 
 [[package]]
@@ -1405,10 +1405,10 @@ types = []
 
 [[package]]
 name = "scruby-plugin"
-version = "0.3.0"
+version = "0.3.2"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/41/a5/5ff2c041e7c180ddabc2de2ea555bb9197383b0d44d5a23c74ca86faf07d/scruby_plugin-0.3.0-py3-none-any.whl", hash = "sha256:05d9ea4ddb49fdb5b51479a3b31cb92fdf424d3ae4140eea437cfacc0653d1b1", size = 4548, upload-time = "2026-01-20T03:02:26.411Z" },
+    { url = "https://files.pythonhosted.org/packages/0c/b4/5355e8bf643c6a47972640bba1f9b08402febf9f7e92be010bcd014d553a/scruby_plugin-0.3.2-py3-none-any.whl", hash = "sha256:577f40541159c2fba293111d8fed22dc50aae16b41875b5899d44079dbd68809", size = 4584, upload-time = "2026-01-21T18:42:48.598Z" },
 ]
 
 [[package]]
@@ -1508,10 +1508,10 @@ wheels = [
 
 [[package]]
 name = "xloft"
-version = "0.10.5"
+version = "0.10.6"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/96/88/def76589675785c6bd1af1372c7e09eac97c3030cf401085136433801f12/xloft-0.10.5-py3-none-any.whl", hash = "sha256:12c9e77dca13b09af12c86410ae10501ac6edab513b021295930a32627517494", size = 13048, upload-time = "2026-01-19T16:22:45.904Z" },
+    { url = "https://files.pythonhosted.org/packages/66/0e/43c91f0ee43f31035cf242a26c0bcb0e4b8336ed6d4f8e1753fcfad993d1/xloft-0.10.6-py3-none-any.whl", hash = "sha256:74a22c7f02f496196efe3fe7309428569c7a4de5d26b8458059066ea738c3e89", size = 13070, upload-time = "2026-01-21T18:54:54.342Z" },
 ]
 
 [[package]]

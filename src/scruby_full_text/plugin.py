@@ -25,8 +25,8 @@ from scruby_full_text.settings import FullTextSettings
 class FullTextSearch(ScrubyPlugin):
     """Plugin for Scruby based on Manticore Search."""
 
-    def __init__(self, scruby: Any) -> None:  # noqa: D107
-        ScrubyPlugin.__init__(self, scruby)
+    def __init__(self, scruby_self: Any) -> None:  # noqa: D107
+        ScrubyPlugin.__init__(self, scruby_self)
 
     @staticmethod
     async def _task_find(
@@ -121,16 +121,16 @@ class FullTextSearch(ScrubyPlugin):
             Document or None.
         """
         # Get Scruby instance
-        scruby = self.scruby()
+        scruby_self = self.scruby_self()
         # Variable initialization
         search_task_fn: Callable = self._task_find
-        branch_numbers: range = range(scruby._max_number_branch)
-        hash_reduce_left: int = scruby._hash_reduce_left
-        db_root: str = scruby._db_root
-        class_model: Any = scruby._class_model
+        branch_numbers: range = range(scruby_self._max_number_branch)
+        hash_reduce_left: int = scruby_self._hash_reduce_left
+        db_root: str = scruby_self._db_root
+        class_model: Any = scruby_self._class_model
         config = FullTextSettings.config
         # Run quantum loop
-        with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
+        with concurrent.futures.ThreadPoolExecutor(scruby_self._max_workers) as executor:
             for branch_number in branch_numbers:
                 future = executor.submit(
                     search_task_fn,
@@ -179,19 +179,19 @@ class FullTextSearch(ScrubyPlugin):
         # The `page_number` parameter must not be less than one
         assert page_number > 0, "`find_many` => The `page_number` parameter must not be less than one."
         # Get Scruby instance
-        scruby = self.scruby()
+        scruby_self = self.scruby_self()
         # Variable initialization
         search_task_fn: Callable = self._task_find
-        branch_numbers: range = range(scruby._max_number_branch)
-        hash_reduce_left: int = scruby._hash_reduce_left
-        db_root: str = scruby._db_root
-        class_model: Any = scruby._class_model
+        branch_numbers: range = range(scruby_self._max_number_branch)
+        hash_reduce_left: int = scruby_self._hash_reduce_left
+        db_root: str = scruby_self._db_root
+        class_model: Any = scruby_self._class_model
         config = FullTextSettings.config
         counter: int = 0
         number_docs_skippe: int = limit_docs * (page_number - 1) if page_number > 1 else 0
         result: list[Any] = []
         # Run quantum loop
-        with concurrent.futures.ThreadPoolExecutor(scruby._max_workers) as executor:
+        with concurrent.futures.ThreadPoolExecutor(scruby_self._max_workers) as executor:
             for branch_number in branch_numbers:
                 if number_docs_skippe == 0 and counter >= limit_docs:
                     return result[:limit_docs]
