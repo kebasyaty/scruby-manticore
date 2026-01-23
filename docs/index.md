@@ -32,15 +32,11 @@
 Scruby-Full-Text is a plugin for the <a href="https://pypi.org/project/scruby/" alt="Scruby">Scruby</a> project.
 </p>
 
-#### Requirements
+<hr>
 
 [![Requirements](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/requirements.svg "Requirements")](https://github.com/kebasyaty/scruby-full-text/blob/v0/REQUIREMENTS.md "Requirements")
 
-#### Changelog
-
 [![Changelog](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/changelog.svg "Changelog")](https://github.com/kebasyaty/scruby-full-text/blob/v0/CHANGELOG.md "Changelog")
-
-#### License
 
 [![MIT](https://raw.githubusercontent.com/kebasyaty/scruby-full-text/v0/assets/links/mit.svg "MIT")](https://github.com/kebasyaty/scruby-full-text/blob/main/MIT-LICENSE "MIT")
 
