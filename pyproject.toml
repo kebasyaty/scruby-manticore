@@ -1,6 +1,6 @@
 [project]
 name = "scruby-full-text"
-version = "0.3.6"
+version = "0.3.7"
 description = "Full-text search with Manticore Search."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
