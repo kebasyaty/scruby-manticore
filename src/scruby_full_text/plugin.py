@@ -28,6 +28,18 @@ class FullTextSearch(ScrubyPlugin):
     def __init__(self, scruby_self: Any) -> None:  # noqa: D107
         ScrubyPlugin.__init__(self, scruby_self)
 
+    async def delete_orphaned_tables() -> None:
+        """Delete unnecessary tables that remain due to errors."""
+        config = FullTextSettings.config
+        async with manticoresearch.ApiClient(config) as api_client:
+            utils_api = manticoresearch.UtilsApi(api_client)
+            tables = await utils_api.sql("SHOW TABLES LIKE 'scruby_%'")
+            oneof_schema_1_validator = tables.oneof_schema_1_validator
+            if oneof_schema_1_validator is not None:
+                data = oneof_schema_1_validator[0]["data"]
+                for item in data:
+                    await utils_api.sql(f"DROP TABLE IF EXISTS {item['Table']}")
+
     @staticmethod
     async def _task_find(
         branch_number: int,
