@@ -28,7 +28,8 @@ class FullTextSearch(ScrubyPlugin):
     def __init__(self, scruby_self: Any) -> None:  # noqa: D107
         ScrubyPlugin.__init__(self, scruby_self)
 
-    async def delete_orphaned_tables() -> None:
+    @classmethod
+    async def delete_orphaned_tables(cls) -> None:
         """Delete unnecessary tables that remain due to errors."""
         config = FullTextSettings.config
         async with manticoresearch.ApiClient(config) as api_client:
