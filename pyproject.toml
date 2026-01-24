@@ -1,7 +1,7 @@
 [project]
 name = "scruby-full-text"
-version = "0.4.2"
-description = "Full-text search with Manticore Search."
+version = "0.4.3"
+description = "Plugin for Scruby - Full-text search with Manticore Search."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "MIT or GPL-3.0-or-later"
